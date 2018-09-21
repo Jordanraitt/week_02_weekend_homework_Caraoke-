@@ -1,5 +1,6 @@
 require("minitest/autorun")
 require("minitest/rg")
+require("pry")
 require_relative("../rooms.rb")
 require_relative("../guests.rb")
 require_relative("../songs.rb")
@@ -57,13 +58,20 @@ class RoomsTest < MiniTest::Test
     assert_equal(1, @room.get_guest_count)
   end
 
-  def test_guest__add()
+  def test_song__add()
     @room.add_song(@song_02)
     assert_equal(2, @room.get_song_count)
   end
 
+  def test_capacity_check__true()
+    result = @room.capacity_check
+    assert_equal(true, result)
+  end
 
-
-
+  def test_capacity_check__false()
+    14.times{@room.add_guest(@guest_01)}
+    result = @room.capacity_check
+    assert_equal(false, result)
+  end
 
 end

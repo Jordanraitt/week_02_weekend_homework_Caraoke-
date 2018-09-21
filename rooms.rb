@@ -1,7 +1,7 @@
 class Room
 
-attr_accessor :tab
-attr_reader :song_list, :room_capacity
+attr_accessor :tab, :room_capacity
+attr_reader :song_list
 
   def initialize(room_capacity = [], song_list = [])
     @room_capacity = room_capacity
@@ -10,11 +10,20 @@ attr_reader :song_list, :room_capacity
   end
 
   def add_guest(guest)
+    if capacity_check == true
     @room_capacity.push(guest)
+  else
+      p "Too many in the room."
+    end
+
   end
 
   def remove_guest(guest)
     @room_capacity.delete(guest)
+  end
+
+  def capacity_check()
+   get_guest_count <= 14
   end
 
   def get_guest_count

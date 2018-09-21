@@ -22,12 +22,17 @@ class GuestsTest < MiniTest::Test
     @guest_15 = Guest.new("Judas", 13)
   end
 
-def test_guest_name()
-assert_equal("John", @guest_01.name)
-end
+  def test_guest_name()
+    assert_equal("John", @guest_01.name)
+  end
 
-def test_guest_wallet()
-assert_equal(15, @guest_01.wallet)
-end
+  def test_guest_wallet()
+    assert_equal(15, @guest_01.wallet)
+  end
+
+  def test_reduce_wallet()
+    @guest_01.wallet -= 1
+    assert_equal(14, @guest_01.wallet)
+  end
 
 end
