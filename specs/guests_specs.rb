@@ -31,8 +31,13 @@ class GuestsTest < MiniTest::Test
   end
 
   def test_reduce_wallet()
-    @guest_01.wallet -= 1
-    assert_equal(14, @guest_01.wallet)
+    @guest_01.wallet -= 5
+    assert_equal(10, @guest_01.wallet)
+  end
+
+  def test_enough_money_in_wallet__true()
+    result = @guest_01.enough_money_in_wallet
+    assert_equal(true, result)
   end
 
 end

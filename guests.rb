@@ -9,7 +9,15 @@ attr_reader :name
   end
 
   def reduce_wallet(value)
-    @wallet -= value
+    if enough_money_in_wallet == true
+      @wallet -= value
+    else
+      p "Not enough money, buddy."
+    end
+  end
+
+  def enough_money_in_wallet()
+    @wallet >= 5
   end
 
 end
