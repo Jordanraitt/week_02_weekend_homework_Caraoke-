@@ -16,8 +16,8 @@ attr_reader :name
     end
   end
 
-  def enough_money_in_wallet()
-    @wallet >= 5
+  def enough_money_in_wallet(value)
+     @wallet >= value
   end
 
 end

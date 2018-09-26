@@ -36,7 +36,7 @@ class RoomsTest < MiniTest::Test
     @guest_14 = Guest.new("Jesus", 666)
     @guest_15 = Guest.new("Judas", 13)
 
-    @room = Room.new([@guest_02],[@song_01])
+    @room = Room.new([@guest_02],[@song_01], 5)
   end
 
   def test_has_guest
@@ -72,6 +72,17 @@ class RoomsTest < MiniTest::Test
     14.times{@room.add_guest(@guest_01)}
     result = @room.capacity_check
     assert_equal(false, result)
+  end
+
+  def test_increase_tab()
+    @room.increase_tab(@room.price)
+    assert_equal(5, @room.tab)
+  end
+
+  def test_transaction()
+    @room.transaction(@guest_01, @room.price)
+    assert_equal(10, @guest_01.wallet)
+    assert_equal(5, @room.tab)
   end
 
 end

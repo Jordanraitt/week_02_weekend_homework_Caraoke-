@@ -36,7 +36,7 @@ class GuestsTest < MiniTest::Test
   end
 
   def test_enough_money_in_wallet__true()
-    result = @guest_01.enough_money_in_wallet
+    result = @guest_01.enough_money_in_wallet(5)
     assert_equal(true, result)
   end
 

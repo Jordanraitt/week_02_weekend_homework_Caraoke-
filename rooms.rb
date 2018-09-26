@@ -1,21 +1,22 @@
 class Room
 
-attr_accessor :tab, :room_capacity
+attr_accessor :tab, :room_capacity, :price
 attr_reader :song_list
 
-  def initialize(room_capacity = [], song_list = [])
+  def initialize(room_capacity = [], song_list = [], price)
     @room_capacity = room_capacity
-    @tab = 0
+    @till = 0
     @song_list = song_list
+    @price = price
   end
 
   def add_guest(guest)
-    if capacity_check == true
+    if capacity_check
+      # && guest.enough_money_in_wallet
     @room_capacity.push(guest)
-  else
+    else
       p "Too many in the room."
     end
-
   end
 
   def remove_guest(guest)
@@ -37,6 +38,18 @@ attr_reader :song_list
   def get_song_count
     @song_list.length
   end
+
+  def increase_tab(price)
+    @till += price
+  end
+
+  def transaction(guest, price)
+    guest.reduce_wallet(price)
+    increase_tab(price)
+  end
+
+
+
 
 # def add_song()
 #
